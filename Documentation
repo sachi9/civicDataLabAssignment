@@ -1,3 +1,4 @@
+Introduction
 The hpt_ifms_script.py is an automated script for web scrapping the Himachal Pradesh Treasury Portal and collecting data from Integrated Financial Management System(IFMS).
 It uses selenium for automating the data collecting part and BeautifulSoup for scrapping the website and collecting data.
 Selenium is an open source umbrella project for a range of tools and libraries aimed at supporting browser automation.
@@ -7,6 +8,8 @@ Pandas is a software library written for the Python programming language for dat
 The cleaned data is then stored in a sqlite database hpt_ifms_scripted.
 The whole process is converted into a data pipeline which is scheduled to run every month.
 The whole process is explained in detail below.
+
+Python Version: 3.11.5
 
 1. Web Scrapping
 Using selenium and BeautifulSoup, the whole process of getting the data from the Himachal Pradesh Treasury Portal is automated.
