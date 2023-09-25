@@ -14,21 +14,26 @@ From Date :- 01/04/2018
 To Date :- 31/03/2022
 Select Report Data as per : Demand and HOA Wise Summary
 Unit: Rupees
+
 Perform following steps to clean the raw dataset:
+
 Step 1: Drop all the rows where the columns HOA and DmdCd contains Total
+
 Step 2: Fill all the blank cells in column DmdCd with relevant values 
+
 Step 3: Split the column DmdCd at “-” and create two additional columns DemandCode and Demand from the splitted values.
+
 Step 4: Split column HOA at “-” and expand the result to additional columns. These should be named as:
-MajorHead
-SubMajorHead
-MinorHead
-SubMinorHead
-DetailHead
-SubDetailHead
-BudgetHead
-PlanNonPlan
-VotedCharged
-StatementofExpenditure
+  MajorHead
+  SubMajorHead
+  MinorHead
+  SubMinorHead
+  DetailHead
+  SubDetailHead
+  BudgetHead
+  PlanNonPlan
+  VotedCharged
+  StatementofExpenditure
 
 Write a Python script to store the processed data in a SQLite database
 During the call, we would like to discuss if there are other ways in which this database can further be normalised. 
