@@ -1,0 +1,39 @@
+The hpt_ifms_script.py is an automated script for web scrapping the Himachal Pradesh Treasury Portal and collecting data from Integrated Financial Management System(IFMS).
+It uses selenium for automating the data collecting part and BeautifulSoup for scrapping the website and collecting data.
+Selenium is an open source umbrella project for a range of tools and libraries aimed at supporting browser automation.
+Beautiful Soup is a Python package for parsing HTML and XML documents. It creates a parse tree for parsed pages that can be used to extract data from HTML, which is useful for web scraping.
+After collecting the data,it is converted to a pandas dataframe and the necessary data cleaning measures were followed.
+Pandas is a software library written for the Python programming language for data manipulation and analysis. In particular, it offers data structures and operations for manipulating numerical tables and time series.
+The cleaned data is then stored in a sqlite database hpt_ifms_scripted.
+The whole process is converted into a data pipeline which is scheduled to run every month.
+The whole process is explained in detail below.
+
+1. Web Scrapping
+Using selenium and BeautifulSoup, the whole process of getting the data from the Himachal Pradesh Treasury Portal is automated.
+using selenium to set the From Date : 01/04/2018 and To Date : 31/03/2022, also setting the unit to Rupees
+These dates can be changed accordingly as per need of the user.
+BeautifulSoup was used to collect the table data.
+the table data was then converted into a pandas dataframe.
+
+2. Data Cleaning
+After the pandas dataframe was created, the following Steps were performed:
+    a) Step 1: All the rows where the columns HOA and DmdCd contains Total were Dropped
+    b) Step 2: All the blank cells in column DmdCd were filled with relevant values
+    c) Step 3: The column DmdCd was split at “-” and two additional columns DemandCode and Demand were created from the splitted values.
+    d) Step 4: Column HOA was split at “-” and the result was expanded to additional columns. The columns are as follows:
+        i) MajorHead
+        ii) SubMajorHead
+        iii) MinorHead
+        iv) SubMinorHead
+        v) DetailHead
+        vi) SubDetailHead
+        vii) BudgetHead
+        viii) PlanNonPlan
+        ix) VotedCharged
+        x) StatementofExpenditure
+
+3. Writing data to Sqlite
+using the sqlite3 library in python created a sqlite database and saved the pandas dataframe in a table.
+
+4. Creating Pipeline
+using the schedule module in python the whole pipeline is scheduled to run every month at 10.30 AM once the script is running.
